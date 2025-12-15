@@ -1,3 +1,4 @@
+# swea 1940. 가랏! RC카!
 T = int(input()) # 테스트 케이스 개수
 for test_case in range(1, T+1):
     N = int(input()) # Command의 수
