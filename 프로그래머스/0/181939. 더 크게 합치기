@@ -1,0 +1,18 @@
+class Solution {
+    public int solution(int a, int b) {
+        // 1. 문자열로 먼저 합치기
+        String answer1 = a + "" + b;
+        String answer2 = b + "" + a;
+        
+        // 2. [중요] 숫자로 변환해서 '비교'할 수 있게 만들기
+        int num1 = Integer.parseInt(answer1);
+        int num2 = Integer.parseInt(answer2);
+        
+        // 3. 변수를 밖으로 꺼내서 리턴하거나, 직접 리턴하기
+        if (num1 > num2) {
+            return num1;
+        } else {
+            return num2;
+        }
+    }
+}
