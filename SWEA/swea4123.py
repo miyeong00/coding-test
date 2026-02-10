@@ -34,7 +34,7 @@ for test_case in range(1, T+1):
             dfs(idx + 1, cur - numbers[idx])
             operators[1] += 1
 
-        # * 계산
+        # x 계산
         if operators[2] > 0:
             operators[2] -= 1
             dfs(idx + 1, cur * numbers[idx])
