@@ -31,3 +31,65 @@ for test_case in range(1, T+1):
 
     used_A = [0] * (K + 1) # 어떤 고객이 몇 번 접수 창구를 이용했는가 => A랑 비교
     used_B = [0] * (K + 1) # 어떤 고객이 몇 번 정비 창구를 이용했는가 => B랑 비교
+
+    t = 0 # 시간
+    idx = 0 # 아직 도착 처리 안 한 고객 인덱스
+    done = 0 # 정비 끝난 고객
+    answer = 0 # A, B를 이용한 고객번호의 합
+
+    while done < K:
+        # 1. 정비 완료 처리
+        for j in range(M):
+            if repair[j] is not None:
+                customer, remain = repair[j]
+                if remain == 0:
+                    # 정비 완료 -> 설문지 받음(종료)
+                    if used_A[customer] == A and used_B[customer] == B:
+                        answer += customer
+                    repair[j] = None
+                    done += 1
+
+        # 2. 접수 완료 고객을 정비 대기로 이동
+        for i in range(N):
+            if reception[i] is not None:
+                customer, remain = reception[i]
+                if remain == 0:
+                    heapq.heappush(wait_repair, (t, i+1, customer))
+                    reception[i] = None
+
+        # 3. 정비 창구 배정 (창구번호 작은 순)
+        for j in range(M):
+            if repair[j] is None and wait_repair:
+                _, recp_no, customer = heapq.heappop(wait_repair)
+                used_B[customer] = j + 1
+                repair[j] = (customer, repair_time[j])
+
+        # 4. 시간 t에 도착한 고객 -> 접수 대기열
+        while idx < K and visit_time[idx] == t:
+            wait_receipt.append(idx + 1)
+            idx += 1
+
+        # 5. 접수 창구 배정 (창구번호 작은 순)
+        for i in range(N):
+            if reception[i] is None and wait_receipt:
+                customer = wait_receipt.popleft()
+                used_A[customer] = i + 1
+                reception[i] = (customer, receipt_time[i])
+
+        # 6. 1초 경과: 남은 시간 감소
+        for i in range(N):
+            if reception[i] is not None:
+                customer, remain = reception[i]
+                reception[i] = (customer, remain - 1)
+
+        for j in range(M):
+            if repair[j] is not None:
+                customer, remain = repair[j]
+                repair[j] = (customer, remain - 1)
+
+        t += 1
+
+    if answer == 0:
+        answer = -1
+
+    print(f'#{test_case} {answer}')
