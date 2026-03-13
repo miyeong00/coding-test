@@ -5,6 +5,7 @@
 ![Baekjoon](https://img.shields.io/badge/Baekjoon-Online%20Judge-0076C0?style=for-the-badge)
 ![Programmers](https://img.shields.io/badge/Programmers-Coding%20Test-1E3A8A?style=for-the-badge)
 ![SWEA](https://img.shields.io/badge/SWEA-SW%20Expert%20Academy-FF6F00?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 
 코딩테스트 문제 풀이를 정리한 저장소입니다.  
