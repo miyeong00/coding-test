@@ -3,7 +3,7 @@ def time_to_seconds(time_str):
     return minute * 60 + seconds
 
 def seconds_to_time(total_seconds):
-    # 분과 초를 구하고, 두 자리 숫자로 맞춤 (01:05 등)
+    # 분과 초를 구하고, 두 자리 숫자로 맞춤
     m = total_seconds // 60
     s = total_seconds % 60
     return f"{m:02d}:{s:02d}"
