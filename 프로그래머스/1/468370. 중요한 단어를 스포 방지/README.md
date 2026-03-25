@@ -1,3 +1,4 @@
+커밋이 안 올라가요ㅠㅠ
 # [level 1] 중요한 단어를 스포 방지 - 468370 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/468370?language=python3) 
