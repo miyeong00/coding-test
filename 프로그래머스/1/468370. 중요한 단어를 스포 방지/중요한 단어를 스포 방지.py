@@ -11,7 +11,7 @@ def solution(message, spoiler_ranges):
     if not words:
         return 0
 
-    # 단어의 끝 인덱스만 모은 리스트 (이진 탐색용)
+    # 단어의 끝 인덱스만 모은 리스트
     word_ends = [w[1] for w in words]
     n = len(message)
 
