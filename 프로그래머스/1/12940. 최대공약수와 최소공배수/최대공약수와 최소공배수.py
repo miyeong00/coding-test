@@ -1,20 +1,11 @@
 def solution(n, m):
-    answer = []
-    original_n = n
-    original_m = m
-    
-    min_num = min(n, m)
-    
     # 최대공약수
-    while min_num > 0:
-        if n % min_num == 0 and m % min_num == 0:
-            answer.append(min_num)
-            break
-        else:
-            min_num -= 1
+    gcd = 0
+    for i in range(1, n+1):
+        if n % i == 0 and m % i == 0:
+            gcd = i
             
     # 최소공배수
-    lcm_val = (n * m) // answer[0]
-    answer.append(lcm_val)
+    lcm = gcd * (n // gcd) * (m // gcd)
     
-    return answer
+    return [gcd, lcm]
